@@ -1,0 +1,10 @@
+.img1 {
+  background: url("./img/img1.jpeg");
+}
+.img2 {
+  background: url("./img/dp.jpeg") no-repeat;
+  width: 60px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
