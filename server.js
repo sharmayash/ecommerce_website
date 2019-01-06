@@ -1,5 +1,7 @@
 const express = require("express"),
-  mongoose = require("mongoose");
+  mongoose = require("mongoose"),
+  bodyParser = require("body-parser"),
+  passport = require("passport");
 
 // importing routes files
 
@@ -8,6 +10,10 @@ const users = require("./routes/api/users"),
   products = require("./routes/api/products");
 
 const app = express();
+
+// body parser middlewares
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // db configurations
 const db = require("./config/keys").mongoURI;
@@ -21,12 +27,17 @@ mongoose
   .then(() => console.log("mongoDb connected"))
   .catch(err => console.log(err));
 
-app.get("/", (req, res) => res.send("hello"));
-
 app.use("/api/users", users);
 app.use("/api/profile", profile);
 app.use("/api/products", products);
 
-const port = process.env.PORT || 1000;
+// ============ PASSPORT SETUP ==============
 
+app.use(passport.initialize());
+
+// require passport config file
+
+require("./config/passport")(passport);
+
+const port = process.env.PORT || 1000;
 app.listen(port, () => console.log(`server running on port ${port}`));
