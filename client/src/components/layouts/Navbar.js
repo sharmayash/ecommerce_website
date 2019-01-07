@@ -7,7 +7,7 @@ class Navbar extends Component {
       <div>
         <nav className="blue-grey darken-2">
           <div className="nav-wrapper container">
-            <Link to="!#" className="brand-logo">
+            <Link to="/" className="brand-logo">
               Project
             </Link>
             <Link to="!#" data-target="slide-out" className="sidenav-trigger">
@@ -38,12 +38,12 @@ class Navbar extends Component {
           </div>
         </nav>
 
-        <ul id="slide-out" className="sidenav">
+        <ul id="slide-out" className="sidenav blue-grey darken-2">
           <li>
             <div className="user-view">
               <div className="background img1" />
               <Link to="/profile">
-                <img className="circle img2" alt="" />
+                <img className="circle img2" alt="profile_pic" />
               </Link>
               <Link to="/profile">
                 <span className="white-text name">John Doe</span>
