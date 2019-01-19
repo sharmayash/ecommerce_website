@@ -43,7 +43,7 @@ class Navbar extends Component {
             <div className="user-view">
               <div className="background img1" />
               <Link to="/profile">
-                <img className="circle img2" alt="profile_pic" />
+                <img className="circle img2" alt="dp"/>
               </Link>
               <Link to="/profile">
                 <span className="white-text name">John Doe</span>
