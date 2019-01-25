@@ -43,7 +43,7 @@ class App extends Component {
         <BrowserRouter>
           <div className="App blue-grey">
             <Navbar />
-            <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/" component={Dashboard} />
             <div className="container">
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />

@@ -58,7 +58,7 @@ class Navbar extends Component {
             {isAuthenticated ? authLink : guestLink}
             <ul
               className="left hide-on-med-and-down"
-              style={{ marginLeft: "150px", marginTop: "6px" }}
+              style={{ marginLeft: "150px" }}
             >
               <li>
                 <Link to="/phones">SmartPhones</Link>

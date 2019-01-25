@@ -2,16 +2,29 @@ const express = require("express"),
   router = express.Router(),
   passport = require("passport"),
   bcrypt = require("bcryptjs"),
-  jwt = require("jsonwebtoken"),  
+  jwt = require("jsonwebtoken"),
   keys = require("../../config/keys"),
   User = require("../../models/Users");
+
+// load input validations
+
+const validateRegisterInput = require("../../validation/register");
+const validateLoginInput = require("../../validation/login");
 
 // register / sign up the user
 
 router.post("/register", (req, res) => {
+  const { errors, isValid } = validateRegisterInput(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
   User.findOne({ email: req.body.email }).then(userExist => {
     if (userExist) {
-      console.log("user Exist");
+      // if user with that email exist in database
+      errors.email = "Email Already Exist";
+      return res.status(400).json(errors);
     } else {
       const newUser = new User({
         name: req.body.name,
@@ -35,6 +48,12 @@ router.post("/register", (req, res) => {
 // login route
 
 router.post("/login", (req, res) => {
+  const { errors, isValid } = validateLoginInput(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
   const email = req.body.email;
   const password = req.body.password;
 
@@ -44,8 +63,8 @@ router.post("/login", (req, res) => {
     // check for user email
 
     if (!user) {
-      console.log("User Not Found");
-      return res.status(404);
+      errors.email = "User Not Found";
+      return res.status(404).json(errors);
     }
 
     // check for password
@@ -93,6 +112,5 @@ router.get(
     });
   }
 );
-
 
 module.exports = router;
