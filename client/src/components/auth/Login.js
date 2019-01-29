@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
+import TextFieldGroup from "../common/TextFieldGroup";
 
 class Login extends Component {
   state = {
     email: "",
-    password: ""
+    password: "",
+    errors: {}
   };
 
   componentDidMount() {
@@ -18,6 +20,10 @@ class Login extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
       this.props.history.push("/");
+    }
+
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
     }
   }
 
@@ -37,6 +43,8 @@ class Login extends Component {
   };
 
   render() {
+    const { errors } = this.state;
+
     return (
       <div className="register">
         <div className="container center">
@@ -51,28 +59,24 @@ class Login extends Component {
               <div className="card z-depth-5 blue-grey darken-2">
                 <div className="card-content white-text">
                   <div className="row section">
-                    <div className="input-field col s12 m12 l12">
-                      <input
-                        id="email"
-                        type="email"
-                        name="email"
-                        value={this.state.email}
-                        onChange={this.onChange}
-                        placeholder="Email"
-                      />
-                    </div>
+                    <TextFieldGroup
+                      placeholder="Email Address"
+                      name="email"
+                      type="email"
+                      value={this.state.email}
+                      onChange={this.onChange}
+                      error={errors.email}
+                    />
                   </div>
                   <div className="row section">
-                    <div className="input-field col s12 m12 l12">
-                      <input
-                        id="password"
-                        type="password"
-                        name="password"
-                        value={this.state.password}
-                        onChange={this.onChange}
-                        placeholder="Password"
-                      />
-                    </div>
+                    <TextFieldGroup
+                      placeholder="Password"
+                      name="password"
+                      type="password"
+                      value={this.state.password}
+                      onChange={this.onChange}
+                      error={errors.password}
+                    />
                   </div>
                 </div>
                 <div className="card-action">

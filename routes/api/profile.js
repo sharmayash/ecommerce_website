@@ -4,8 +4,11 @@ const express = require("express"),
 
 // Load database models
 
-const Profile = require("../../models/profile"),
-  User = require("../../models/Users");
+const Profile = require("../../models/profile");
+
+// import validation files
+
+const validateProfileInput = require("../../validation/profile");
 
 // get current user profile // private route
 
@@ -13,11 +16,14 @@ router.get(
   "/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
+    const errors = {};
+
     Profile.findOne({ user: req.user.id })
       .populate("user", ["name", "email"])
       .then(profile => {
         if (!profile) {
-          return res.status(404).json("User profile not exist");
+          errors.noprofile = "User profile not exist";
+          return res.status(404).json(errors);
         }
         res.json(profile);
       })
@@ -31,6 +37,12 @@ router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
+    const { errors, isValid } = validateProfileInput(req.body);
+
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+
     const profileFields = {};
 
     profileFields.user = req.user.id;
@@ -50,7 +62,8 @@ router.post(
         // create one profile
         Profile.findOne({ username: req.body.username }).then(profile => {
           if (profile) {
-            return res.status(404).json("Username Already Exist");
+            errors.username = "Username Already Exist";
+            return res.status(404).json(errors);
           }
 
           new Profile(profileFields).save().then(profile => res.json(profile));
