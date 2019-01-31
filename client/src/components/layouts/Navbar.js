@@ -16,7 +16,9 @@ class Navbar extends Component {
     const authLink = (
       <ul className="right hide-on-med-and-down">
         <li>
-          <Link to="/profile">Welcome {user.name}</Link>
+          <Link to="/profile">
+            <i className="material-icons">account_box</i>
+          </Link>
         </li>
         <li>
           <a href="!#" onClick={this.onLogOutClick}>
@@ -61,16 +63,29 @@ class Navbar extends Component {
               style={{ marginLeft: "150px" }}
             >
               <li>
-                <Link to="/phones">SmartPhones</Link>
+                <Link to="/phones">
+                  <i className="material-icons">phone_iphone</i>
+                </Link>
               </li>
               <li>
-                <Link to="/laptops">Laptops</Link>
+                <Link to="/laptops">
+                  <i className="material-icons">laptop</i>
+                </Link>
               </li>
               <li>
-                <Link to="/watches">Smart Watches</Link>
+                <Link to="/watches">
+                  <i className="material-icons">watch</i>
+                </Link>
               </li>
               <li>
-                <Link to="/games">Games</Link>
+                <Link to="/games">
+                  <i className="material-icons">games</i>
+                </Link>
+              </li>
+              <li>
+                <Link to="/headset">
+                  <i className="material-icons">headset</i>
+                </Link>
               </li>
             </ul>
           </div>
@@ -96,21 +111,31 @@ class Navbar extends Component {
           <li>
             <Link className="waves-effect" to="/phones">
               Smart Phones
+              <i className="material-icons right">phone_iphone</i>
             </Link>
           </li>
           <li>
             <Link className="waves-effect" to="/laptops">
               Laptops
+              <i className="material-icons right">laptop</i>
             </Link>
           </li>
           <li>
             <Link className="waves-effect" to="/watches">
               Smart Watches
+              <i className="material-icons right">watch</i>
             </Link>
           </li>
           <li>
-            <Link className="waves-effect" to="/games">
+            <Link className="waves-effect" to="/gmaes">
               Games
+              <i className="material-icons right">games</i>
+            </Link>
+          </li>
+          <li>
+            <Link className="waves-effect" to="/headset">
+              Headsets
+              <i className="material-icons right">headset</i>
             </Link>
           </li>
           <li>

@@ -19,7 +19,7 @@ const SelectListComponent = ({ name, value, error, onChange, options }) => {
       >
         {selectOptions}
       </select>
-      <label>Select Account Type *</label>
+      <label>Select Account Type * (reload if this's not visible)</label>
       {error && <span className="helper-text red-text">{error}</span>}
     </div>
   );
