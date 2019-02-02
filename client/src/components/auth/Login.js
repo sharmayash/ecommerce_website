@@ -46,7 +46,7 @@ class Login extends Component {
     const { errors } = this.state;
 
     return (
-      <div className="register">
+      <div className="login">
         <div className="container center">
           <h3>Log In</h3>
           <br />

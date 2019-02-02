@@ -27,7 +27,7 @@ router.get("/:id", (req, res) => {
     );
 });
 
-// post new product // private route only created by buisness account type
+// post new product // private route
 
 router.post(
   "/",

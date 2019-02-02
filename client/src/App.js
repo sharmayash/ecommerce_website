@@ -21,6 +21,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import ProfileComponent from "./components/profile/ProfileComponent";
 import EditProfile from "./components/profile/EditProfile";
 import ShowProfile from "./components/profile/ShowProfile";
+import ProductForm from "./components/products/ProductForm";
 
 //check for tokens
 if (localStorage.jwtToken) {
@@ -69,11 +70,10 @@ class App extends Component {
               />
             </Switch>
             <Switch>
-              <PrivateRoute
-                exact
-                path="/profile"
-                component={ShowProfile}
-              />
+              <PrivateRoute exact path="/profile" component={ShowProfile} />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/sell" component={ProductForm} />
             </Switch>
             <Footer />
           </div>

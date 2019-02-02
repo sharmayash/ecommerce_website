@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getCurrentProfile } from "../../actions/profileAction";
+import ShowProducts from "../products/ShowProducts";
+import PreLoader from "../common/PreLoader";
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -19,30 +21,16 @@ class Dashboard extends Component {
 
     if (profile == null || loading) {
       if (isAuthenticated) {
-        dashboardContent = (
-          <div className="preloader-wrapper small active">
-            <div className="spinner-layer spinner-blue-only">
-              <div className="circle-clipper left">
-                <div className="circle" />
-              </div>
-              <div className="gap-patch">
-                <div className="circle" />
-              </div>
-              <div className="circle-clipper right">
-                <div className="circle" />
-              </div>
-            </div>
-          </div>
-        );
+        dashboardContent = <PreLoader />;
       }
     } else {
       if (Object.keys(profile).length > 0) {
         // user has profile display it
         dashboardContent = (
           <div>
-            <h4>Profile exist show products</h4>
+            <p></p>
           </div>
-        )
+        );
       } else if (
         isAuthenticated &&
         Object.keys(profile).length === 0 &&
@@ -64,13 +52,14 @@ class Dashboard extends Component {
 
     return (
       <div className="dashboard">
-        <div className="container center">
+        <div className="container-fluid center">
           <div className="row">
             <div className="col s12 m12 l12">
               <h3>Home</h3>
               {dashboardContent}
             </div>
           </div>
+          <ShowProducts />
         </div>
       </div>
     );

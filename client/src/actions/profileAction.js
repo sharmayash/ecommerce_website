@@ -1,6 +1,12 @@
 import axios from "axios";
 
-import { GET_PROFILE, PROFILE_LOADING, CLEAR_CURRENT_PROFILE, GET_ERRORS } from "./types";
+import {
+  GET_PROFILE,
+  PROFILE_LOADING,
+  CLEAR_CURRENT_PROFILE,
+  GET_ERRORS,
+  PRODUCT_ADD
+} from "./types";
 
 // GET current profile
 
@@ -24,10 +30,15 @@ export const getCurrentProfile = () => dispatch => {
 
 // post // make new profile
 
-export const postNewProfile = (profileData, history) => dispatch => {
+export const postNewProfile = profileData => dispatch => {
   axios
     .post("/api/profile", profileData)
-    .then(res => history.push("/"))
+    .then(res =>
+      dispatch({
+        type: PRODUCT_ADD,
+        payload: res.data
+      })
+    )
     .catch(err =>
       dispatch({
         type: GET_ERRORS,
