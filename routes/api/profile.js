@@ -48,7 +48,6 @@ router.post(
     profileFields.user = req.user.id;
     if (req.body.username) profileFields.username = req.body.username;
     if (req.body.address) profileFields.address = req.body.address;
-    if (req.body.accountType) profileFields.accountType = req.body.accountType;
 
     Profile.findOne({ user: req.user.id }).then(profile => {
       if (profile) {

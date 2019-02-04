@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getCurrentProfile } from "../../actions/profileAction";
+import ShowProductsOnProfile from "./ShowProductsOnProfile";
 
 class ShowProfile extends Component {
   componentDidMount() {
@@ -49,7 +50,10 @@ class ShowProfile extends Component {
                 <br /> {profile.address}
               </h5>
               <br />
-              <span>Account Type: {profile.accountType}</span>
+              {/* <span>Account Type: {profile.accountType}</span> */}
+              <h5>Your products :-</h5>
+              <br/>
+              <ShowProductsOnProfile />
             </div>
           </div>
         );

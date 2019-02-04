@@ -6,7 +6,6 @@ module.exports = function validateProfileInput(data) {
 
   data.username = !isEmpty(data.username) ? data.username : "";
   data.address = !isEmpty(data.address) ? data.address : "";
-  data.accountType = !isEmpty(data.accountType) ? data.accountType : "";
 
   if (validator.isEmpty(data.username)) {
     errors.username = "Username field is required";
@@ -14,10 +13,6 @@ module.exports = function validateProfileInput(data) {
 
   if (validator.isEmpty(data.address)) {
     errors.address = "Address field is required";
-  }
-
-  if (validator.isEmpty(data.accountType)) {
-    errors.accountType = "Account Type is required";
   }
 
 

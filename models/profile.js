@@ -25,11 +25,7 @@ const ProfileSchema = new mongoose.Schema({
         required: true
       }
     }
-  ],
-  accountType: {
-    type: String,
-    required: true
-  }
+  ]
 });
 
 module.exports = Profile = mongoose.model("profiles", ProfileSchema);

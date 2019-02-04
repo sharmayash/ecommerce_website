@@ -16,6 +16,9 @@ class Navbar extends Component {
     const authLink = (
       <ul className="right hide-on-med-and-down">
         <li>
+          <Link to="/sell">Sell</Link>
+        </li>
+        <li>
           <Link to="/profile">
             <i className="material-icons">account_box</i>
           </Link>
@@ -26,14 +29,6 @@ class Navbar extends Component {
           </a>
         </li>
       </ul>
-    );
-
-    const sideAuthLink = (
-      <li>
-        <a href="!#" onClick={this.onLogOutClick}>
-          Log Out
-        </a>
-      </li>
     );
 
     const guestLink = (
@@ -142,7 +137,16 @@ class Navbar extends Component {
             <div className="divider" />
           </li>
           {isAuthenticated ? (
-            sideAuthLink
+            <div>
+              <li>
+                <Link to="/sell">Sell</Link>
+              </li>
+              <li>
+                <a href="!#" onClick={this.onLogOutClick}>
+                  Log Out
+                </a>
+              </li>
+            </div>
           ) : (
             <div>
               <li>

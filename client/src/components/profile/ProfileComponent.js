@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import TextFieldGroup from "../common/TextFieldGroup";
-import SelectListComponent from "../common/SelectListComponent";
+//import SelectListComponent from "../common/SelectListComponent";
 import { postNewProfile } from "../../actions/profileAction";
 
 class ProfileComponent extends Component {
   state = {
     username: "",
     address: "",
-    accountType: "",
+//    accountType: "",
     wishlist: [],
     errors: {}
   };
@@ -29,8 +29,8 @@ class ProfileComponent extends Component {
 
     const profileData = {
       username: this.state.username,
-      address: this.state.address,
-      accountType: this.state.accountType
+      address: this.state.address
+    //  accountType: this.state.accountType
     };
 
     ////////////////////////////////////////////////
@@ -41,11 +41,11 @@ class ProfileComponent extends Component {
   render() {
     const { errors } = this.state;
 
-    const options = [
-      { label: "Account Type", value: "" },
-      { label: "General", value: "General" },
-      { label: "Buisness", value: "Buisness" }
-    ];
+    // const options = [
+    //   { label: "Account Type", value: "" },
+    //   { label: "General", value: "General" },
+    //   { label: "Buisness", value: "Buisness" }
+    // ];
 
     return (
       <div className="profile">
@@ -66,7 +66,7 @@ class ProfileComponent extends Component {
                         error={errors.username}
                       />
                     </div>
-                    <div className="row">
+                    {/* <div className="row">
                       <SelectListComponent
                         placeholder="Account Type"
                         name="accountType"
@@ -75,7 +75,7 @@ class ProfileComponent extends Component {
                         error={errors.accountType}
                         options={options}
                       />
-                    </div>
+                    </div> */}
                     <div className="row">
                       <TextFieldGroup
                         placeholder="Address *"

@@ -7,8 +7,8 @@ class ProductItem extends Component {
     const { products } = this.props;
 
     return products.map(product => (
-      <div className="col s12 m6 l4">
-        <div className="card" key={product._id}>
+      <div className="col s12 m6 l4" key={product._id}>
+        <div className="card">
           <div className="card-image">
             <img src={product.image} alt={product.name} />
             <span className="card-title">{product.name}</span>

@@ -33,7 +33,7 @@ class ProductForm extends Component {
       addedBy: user.name
     };
 
-    this.props.addProduct(newProduct);
+    this.props.addProduct(newProduct, this.props.history);
     this.setState({
       name: "",
       image: "",

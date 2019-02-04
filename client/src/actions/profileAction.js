@@ -30,15 +30,16 @@ export const getCurrentProfile = () => dispatch => {
 
 // post // make new profile
 
-export const postNewProfile = profileData => dispatch => {
+export const postNewProfile = (profileData, history) => dispatch => {
   axios
     .post("/api/profile", profileData)
-    .then(res =>
+    .then(res => {
       dispatch({
         type: PRODUCT_ADD,
         payload: res.data
-      })
-    )
+      });
+      history.push("/");
+    })
     .catch(err =>
       dispatch({
         type: GET_ERRORS,

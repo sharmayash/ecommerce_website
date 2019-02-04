@@ -29,12 +29,13 @@ export const getProducts = () => dispatch => {
 export const addProduct = (productData, history) => dispatch => {
   axios
     .post("/api/products", productData)
-    .then(res =>
+    .then(res => {
       dispatch({
         type: PRODUCT_ADD,
         payload: res.data
-      })
-    )
+      });
+      history.push("/");
+    })
     .catch(err =>
       dispatch({
         type: GET_ERRORS,

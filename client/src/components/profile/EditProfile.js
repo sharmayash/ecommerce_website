@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 import {withRouter} from "react-router-dom";
 import PropTypes from "prop-types";
 import TextFieldGroup from "../common/TextFieldGroup";
-import SelectListComponent from "../common/SelectListComponent";
+//import SelectListComponent from "../common/SelectListComponent";
 import { postNewProfile, getCurrentProfile } from "../../actions/profileAction";
 
 class ProfileComponent extends Component {
   state = {
     username: "",
     address: "",
-    accountType: "",
+//    accountType: "",
     wishlist: [],
     errors: {}
   };
@@ -33,8 +33,8 @@ class ProfileComponent extends Component {
 
         this.setState({
             username: profile.username,
-            address: profile.address,
-            accountType: profile.accountType
+            address: profile.address
+           // accountType: profile.accountType
         })
     }
   }
@@ -43,8 +43,8 @@ class ProfileComponent extends Component {
 
     const profileData = {
       username: this.state.username,
-      address: this.state.address,
-      accountType: this.state.accountType
+      address: this.state.address
+    //  accountType: this.state.accountType
     };
 
     ////////////////////////////////////////////////
@@ -55,11 +55,11 @@ class ProfileComponent extends Component {
   render() {
     const { errors } = this.state;
 
-    const options = [
-      { label: "Account Type", value: "" },
-      { label: "General", value: "General" },
-      { label: "Buisness", value: "Buisness" }
-    ];
+    // const options = [
+    //   { label: "Account Type", value: "" },
+    //   { label: "General", value: "General" },
+    //   { label: "Buisness", value: "Buisness" }
+    // ];
 
     return (
       <div className="profile">
@@ -76,14 +76,14 @@ class ProfileComponent extends Component {
                   onChange={this.onChange}
                   error={errors.username}
                 />
-                <SelectListComponent
+                {/* <SelectListComponent
                   placeholder="Account Type"
                   name="accountType"
                   value={this.state.accountType}
                   onChange={this.onChange}
                   error={errors.accountType}
                   options={options}
-                />
+                /> */}
                 <TextFieldGroup
                   placeholder="Address *"
                   name="address"
