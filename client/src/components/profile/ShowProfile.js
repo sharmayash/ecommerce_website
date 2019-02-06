@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getCurrentProfile } from "../../actions/profileAction";
 import ShowProductsOnProfile from "./ShowProductsOnProfile";
+import PreLoader from "../common/PreLoader";
 
 class ShowProfile extends Component {
   componentDidMount() {
@@ -14,18 +15,9 @@ class ShowProfile extends Component {
     let showProfile;
     if (profile == null || loading) {
       showProfile = (
-        <div className="preloader-wrapper small active center">
-          <div className="spinner-layer spinner-blue-only">
-            <div className="circle-clipper left">
-              <div className="circle" />
-            </div>
-            <div className="gap-patch">
-              <div className="circle" />
-            </div>
-            <div className="circle-clipper right">
-              <div className="circle" />
-            </div>
-          </div>
+        <div>
+          <PreLoader />
+          <span>Loading Profile ...</span>
         </div>
       );
     } else {
@@ -52,7 +44,7 @@ class ShowProfile extends Component {
               <br />
               {/* <span>Account Type: {profile.accountType}</span> */}
               <h5>Your products :-</h5>
-              <br/>
+              <br />
               <ShowProductsOnProfile />
             </div>
           </div>
@@ -61,7 +53,7 @@ class ShowProfile extends Component {
     }
 
     return (
-      <div className="container">
+      <div className="container center">
         <br />
         {showProfile}
         <br />

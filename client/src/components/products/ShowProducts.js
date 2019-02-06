@@ -16,7 +16,12 @@ class ShowProducts extends Component {
     let postContent;
 
     if (products == null || loading) {
-      postContent = <PreLoader />;
+      postContent = (
+        <div>
+          <PreLoader />
+          <span>Loading Products ...</span>
+        </div>
+      );
     } else {
       postContent = <ProductItem products={products} />;
     }
@@ -24,7 +29,7 @@ class ShowProducts extends Component {
     return (
       <div className="products container-fluid">
         <div className="productitem">
-          <div className="row">{postContent}</div>
+          <div className="row product-card">{postContent}</div>
         </div>
       </div>
     );

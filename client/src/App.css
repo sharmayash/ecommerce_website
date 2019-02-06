@@ -8,3 +8,11 @@
   background-position: center;
   position: relative;
 }
+.product-card {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5%;
+}
+.cardpadding {
+  padding: 2%;
+}

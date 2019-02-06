@@ -21,14 +21,19 @@ class Dashboard extends Component {
 
     if (profile == null || loading) {
       if (isAuthenticated) {
-        dashboardContent = <PreLoader />;
+        dashboardContent = (
+          <div>
+            <PreLoader />
+            <span>Loading Profile ...</span>
+          </div>
+        );
       }
     } else {
       if (Object.keys(profile).length > 0) {
         // user has profile display it
         dashboardContent = (
           <div>
-            <p></p>
+            <p />
           </div>
         );
       } else if (
