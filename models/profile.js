@@ -16,14 +16,8 @@ const ProfileSchema = new mongoose.Schema({
   },
   wishlist: [
     {
-      name: {
-        type: String,
-        required: true
-      },
-      brand: {
-        type: String,
-        required: true
-      }
+      type: mongoose.Schema.Types.Mixed,
+      ref: "products"
     }
   ]
 });

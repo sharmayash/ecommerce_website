@@ -14,21 +14,40 @@ class Navbar extends Component {
     const { isAuthenticated, user } = this.props.auth;
 
     const authLink = (
-      <ul className="right hide-on-med-and-down">
-        <li>
-          <Link to="/sell">Sell</Link>
-        </li>
-        <li>
-          <Link to="/profile">
-            <i className="material-icons">account_box</i>
-          </Link>
-        </li>
-        <li>
-          <a href="!#" onClick={this.onLogOutClick}>
-            Log Out
-          </a>
-        </li>
-      </ul>
+      <div>
+        <ul className="right hide-on-med-and-down">
+          <li>
+            <Link to="/profile">
+              <i className="material-icons">account_box</i>
+            </Link>
+          </li>
+          <li>
+            <Link to="/wishlist">Wishlist</Link>
+          </li>
+          <li>
+            <Link to="/sell">Sell</Link>
+          </li>
+          <li>
+            <Link to="/cart">Cart</Link>
+          </li>
+          <li>
+            <a href="!#" onClick={this.onLogOutClick}>
+              Log Out
+            </a>
+          </li>
+
+          {/* <a
+            href="!"
+            className="dropdown-trigger btn z-depth-0 transparent"
+            data-target="dropdownAll"
+          > More
+            <i className="material-icons right">arrow_drop_down</i>
+          </a> */}
+
+          {/* <ul id="dropdownAll" className="dropdown-content"> */}
+          {/* </ul> */}
+        </ul>
+      </div>
     );
 
     const guestLink = (
@@ -45,7 +64,7 @@ class Navbar extends Component {
     return (
       <div>
         <nav className="blue-grey darken-2">
-          <div className="nav-wrapper container">
+          <div className="nav-wrapper container-fluid navBar">
             <Link to="/" className="brand-logo">
               Project
             </Link>

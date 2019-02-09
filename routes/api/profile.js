@@ -5,6 +5,7 @@ const express = require("express"),
 // Load database models
 
 const Profile = require("../../models/profile");
+const Product = require("../../models/products");
 
 // import validation files
 
@@ -72,20 +73,34 @@ router.post(
   }
 );
 
+// get all wishlisted products
+
+router.get(
+  "/wishlist/",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Profile.findOne({ user: req.user.id }).then(profile =>
+      res.json(profile.wishlist)
+    );
+  }
+);
+
 // adding items to wishlist
 
 router.post(
-  "/wishlist",
+  "/wishlist/:prod_id",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    Profile.findOne({ user: req.user.id }).then(profile => {
-      const newWish = {
-        name: req.body.name,
-        brand: req.body.brand
-      };
-      profile.wishlist.unshift(newWish);
-      profile.save().then(profile => res.json(profile));
-    });
+    Profile.findOne({ user: req.user.id })
+      .then(profile => {
+        Product.findById(req.params.prod_id)
+          .then(product => {
+            profile.wishlist.unshift(product);
+            profile.save().then(profile => res.json(profile));
+          })
+          .catch(err => res.status(404).json(err));
+      })
+      .catch(err => console.log(err));
   }
 );
 
@@ -96,15 +111,15 @@ router.delete(
     Profile.findOne({ user: req.user.id })
       .then(profile => {
         // find index of wished product to delete
-        const index = profile.wishlist
-          .map(prod => prod.id)
-          .indexOf(req.params.wish_id);
+        const index = profile.wishlist.findIndex(
+          item => item._id == req.params.wish_id
+        );
 
         // remove product from wishlist array
         profile.wishlist.splice(index, 1);
 
         // save new wishlist Array to db
-        profile.save().then(profile => res.json(profile));
+        profile.save().then(profile => res.json(profile.wishlist));
       })
       .catch(err => res.status(400).json(err));
   }

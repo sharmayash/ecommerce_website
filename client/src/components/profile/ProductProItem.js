@@ -13,7 +13,7 @@ class ProductProItem extends Component {
           <div className="col s12 m6 l4" key={product._id}>
             <div className="card">
               <div className="card-image">
-                <img src={product.image} alt={product.name} className="responsive-img"/>
+                <img src={product.image} alt={product.name} className="cardImage"/>
                 <span className="card-title">{product.name}</span>
               </div>
               <div className="card-action">
