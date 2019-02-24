@@ -1,17 +1,15 @@
 import axios from "axios";
 import {
   GET_ALL_PRODUCTS,
-  GET_A_PRODUCT,
   PRODUCT_LOADING,
   GET_ERRORS,
   PRODUCT_ADD
 } from "./types";
 
-// get all products
-export const getProducts = () => dispatch => {
+export const getWishes = () => dispatch => {
   dispatch(setProductsLoading());
   axios
-    .get("/api/products")
+    .get("/api/profile/wishlist")
     .then(res =>
       dispatch({
         type: GET_ALL_PRODUCTS,
@@ -26,36 +24,14 @@ export const getProducts = () => dispatch => {
     );
 };
 
-// get a products
-export const getProduct = (id) => dispatch => {
-  dispatch(setProductsLoading());
+export const addWish = productData => dispatch => {
   axios
-    .get(`/api/products/${id}`)
-    .then(res =>
-      dispatch({
-        type: GET_A_PRODUCT,
-        payload: res.data
-      })
-    )
-    .catch(err =>
-      dispatch({
-        type: GET_A_PRODUCT,
-        payload: null
-      })
-    );
-};
-
-// add new product
-
-export const addProduct = (productData, history) => dispatch => {
-  axios
-    .post("/api/products", productData)
+    .post("/api/profile/wishlist", productData)
     .then(res => {
       dispatch({
         type: PRODUCT_ADD,
         payload: res.data
       });
-      history.push("/");
     })
     .catch(err =>
       dispatch({

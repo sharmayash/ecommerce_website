@@ -22,6 +22,8 @@ import ProfileComponent from "./components/profile/ProfileComponent";
 import EditProfile from "./components/profile/EditProfile";
 import ShowProfile from "./components/profile/ShowProfile";
 import ProductForm from "./components/products/ProductForm";
+import WishListPage from "./components/wishlist/WishListPage";
+import ShowAProduct from "./components/products/ShowAProduct";
 
 //check for tokens
 if (localStorage.jwtToken) {
@@ -51,6 +53,7 @@ class App extends Component {
           <div className="App blue-grey">
             <Navbar />
             <Route exact path="/" component={Dashboard} />
+            <Route exact path="/product/:id" component={ShowAProduct} />
             <div className="container">
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
@@ -74,6 +77,9 @@ class App extends Component {
             </Switch>
             <Switch>
               <PrivateRoute exact path="/sell" component={ProductForm} />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/wishlist" component={WishListPage} />
             </Switch>
             <Footer />
           </div>

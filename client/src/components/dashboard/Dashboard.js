@@ -22,7 +22,7 @@ class Dashboard extends Component {
     if (profile == null || loading) {
       if (isAuthenticated) {
         dashboardContent = (
-          <div>
+          <div className="center container">
             <PreLoader />
             <span>Loading Profile ...</span>
           </div>

@@ -9,3 +9,4 @@ export const PRODUCT_LOADING = "PRODUCT_LOADING";
 export const PRODUCT_ADD = "PRODUCT_ADD";
 export const GET_A_PRODUCT = "GET_A_PRODUCT";
 export const PRODUCT_DELETE = "PRODUCT_DELETE";
+export const ADD_WISH = "ADD_WISH";

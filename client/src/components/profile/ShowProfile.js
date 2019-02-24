@@ -24,7 +24,7 @@ class ShowProfile extends Component {
       if (Object.keys(profile).length > 0 && profile.constructor === Object) {
         showProfile = (
           <div>
-            <div className="row head">
+            <div className="row">
               <Link
                 to="/edit-profile"
                 className="btn blue-grey darken-3 z-depth-2 right"

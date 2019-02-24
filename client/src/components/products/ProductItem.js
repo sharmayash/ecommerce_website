@@ -7,8 +7,10 @@ class ProductItem extends Component {
     toggle: false
   };
 
-  handleClick = e => {
+  handleClick = (product, e) => {
     e.preventDefault();
+
+    //    console.log(product);
 
     this.setState({
       toggle: !this.state.toggle
@@ -26,8 +28,12 @@ class ProductItem extends Component {
             <span className="card-title">{product.name}</span>
           </div>
           <div className="card-action">
-            <Link to="!#">View</Link>
-            <Link to="!#" onClick={this.handleClick} className="right">
+            <Link to={`/product/${product._id}`}>View</Link>
+            <Link
+              to="!#"
+              onClick={this.handleClick.bind(product, this)}
+              className="right"
+            >
               <i className="material-icons">
                 {this.state.toggle ? "bookmark" : "bookmark_border"}
               </i>
