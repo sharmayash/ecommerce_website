@@ -5,20 +5,6 @@ import { Link } from "react-router-dom";
 import { addWish } from "../../actions/wishlistActions";
 
 class WishItem extends Component {
-  state = {
-    toggle: false
-  };
-
-  handleToggle = e => {
-    e.preventDefault();
-    // find id of clicked item then find item in products with  that id and then pass all data of that item to below function
-
-    
-    //this.props.addWish();
-    this.setState({
-      toggle: !this.state.toggle
-    });
-  };
   render() {
     const { wishlist } = this.props.profile.profile;
 
@@ -31,12 +17,7 @@ class WishItem extends Component {
               <span className="card-title">{wish.name}</span>
             </div>
             <div className="card-action">
-              <Link to="!#">link</Link>
-              <Link to="!#" onClick={this.handleToggle} className="right">
-                <i className="material-icons">
-                  {this.state.toggle ? "bookmark" : "bookmark_border"}
-                </i>
-              </Link>
+              <Link to={`/product/${wish._id}`}>View</Link>
             </div>
           </div>
         </div>

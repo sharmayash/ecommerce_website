@@ -26,7 +26,7 @@ export const getWishes = () => dispatch => {
 
 export const addWish = productData => dispatch => {
   axios
-    .post("/api/profile/wishlist", productData)
+    .post(`/api/profile/wishlist/${productData._id}`, productData)
     .then(res => {
       dispatch({
         type: PRODUCT_ADD,

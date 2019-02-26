@@ -28,7 +28,7 @@ class ShowAProduct extends Component {
         </div>
       );
     }
-    return <div className="product container center">{singleProduct}</div>;
+    return <div className="product container-fluid center">{singleProduct}</div>;
   }
 }
 

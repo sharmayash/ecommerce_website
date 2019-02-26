@@ -3,20 +3,6 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 class ProductItem extends Component {
-  state = {
-    toggle: false
-  };
-
-  handleClick = (product, e) => {
-    e.preventDefault();
-
-    //    console.log(product);
-
-    this.setState({
-      toggle: !this.state.toggle
-    });
-  };
-
   render() {
     const { products } = this.props;
 
@@ -29,15 +15,6 @@ class ProductItem extends Component {
           </div>
           <div className="card-action">
             <Link to={`/product/${product._id}`}>View</Link>
-            <Link
-              to="!#"
-              onClick={this.handleClick.bind(product, this)}
-              className="right"
-            >
-              <i className="material-icons">
-                {this.state.toggle ? "bookmark" : "bookmark_border"}
-              </i>
-            </Link>
           </div>
         </div>
       </div>
