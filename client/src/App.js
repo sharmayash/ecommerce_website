@@ -16,7 +16,6 @@ import PrivateRoute from "./components/common/PrivateRoute";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Navbar from "./components/layouts/Navbar";
-import Footer from "./components/layouts/Footer";
 import Dashboard from "./components/dashboard/Dashboard";
 import ProfileComponent from "./components/profile/ProfileComponent";
 import EditProfile from "./components/profile/EditProfile";
@@ -50,7 +49,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <BrowserRouter>
-          <div className="App blue-grey">
+          <div className="App">
             <Navbar />
             <Route exact path="/" component={Dashboard} />
             <Route exact path="/product/:id" component={ShowAProduct} />
@@ -81,7 +80,6 @@ class App extends Component {
             <Switch>
               <PrivateRoute exact path="/wishlist" component={WishListPage} />
             </Switch>
-            <Footer />
           </div>
         </BrowserRouter>
       </Provider>
