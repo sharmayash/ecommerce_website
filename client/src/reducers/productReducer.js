@@ -1,4 +1,10 @@
-import { GET_ALL_PRODUCTS, PROFILE_LOADING, PRODUCT_ADD, GET_A_PRODUCT } from "../actions/types";
+import {
+  GET_ALL_PRODUCTS,
+  PROFILE_LOADING,
+  PRODUCT_ADD,
+  GET_A_PRODUCT,
+  PRODUCT_DELETE
+} from "../actions/types";
 
 const initialState = {
   products: [],
@@ -12,7 +18,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         products: [action.payload, ...state.products]
-      }
+      };
     case PROFILE_LOADING:
       return {
         ...state,
@@ -29,7 +35,12 @@ export default (state = initialState, action) => {
         ...state,
         product: action.payload,
         loading: false
-      }
+      };
+    case PRODUCT_DELETE:
+      return {
+        ...state,
+        products: state.products.filter(item => item._id !== action.payload)
+      };
     default:
       return state;
   }

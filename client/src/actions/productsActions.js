@@ -4,7 +4,8 @@ import {
   GET_A_PRODUCT,
   PRODUCT_LOADING,
   GET_ERRORS,
-  PRODUCT_ADD
+  PRODUCT_ADD,
+  PRODUCT_DELETE
 } from "./types";
 
 // get all products
@@ -27,7 +28,7 @@ export const getProducts = () => dispatch => {
 };
 
 // get a products
-export const getProduct = (id) => dispatch => {
+export const getProduct = id => dispatch => {
   dispatch(setProductsLoading());
   axios
     .get(`/api/products/${id}`)
@@ -56,6 +57,25 @@ export const addProduct = (productData, history) => dispatch => {
         payload: res.data
       });
       history.push("/");
+    })
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
+// delete a product
+
+export const deleteProduct = productId => dispatch => {
+  axios
+    .delete(`/api/products/${productId}`)
+    .then(res => {
+      dispatch({
+        type: PRODUCT_DELETE,
+        payload: res.data
+      });
     })
     .catch(err =>
       dispatch({

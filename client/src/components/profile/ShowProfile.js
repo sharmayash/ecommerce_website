@@ -15,8 +15,9 @@ class ShowProfile extends Component {
     let showProfile;
     if (profile == null || loading) {
       showProfile = (
-        <div>
+        <div style={{marginTop: '25%'}}>
           <PreLoader />
+          <br/>
           <span>Loading Profile ...</span>
         </div>
       );

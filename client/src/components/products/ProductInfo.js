@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { addWish } from "../../actions/wishlistActions";
 import { getCurrentProfile } from "../../actions/profileAction";
 import { connect } from "react-redux";
+import PreLoader from "../common/PreLoader";
 
 class ProductInfo extends Component {
   componentDidMount() {
@@ -36,7 +37,16 @@ class ProductInfo extends Component {
     console.log("add to cart");
   };
   render() {
-    const { product } = this.props.product;
+    const { product, loading } = this.props.product;
+    if(loading) {
+      return (
+        <div style={{marginTop: '25%'}}>
+          <PreLoader />
+          <br/>
+          <span>Loading Info. for u ...</span>
+        </div>
+      )
+    }
     return (
       <div className="row">
         <br />
