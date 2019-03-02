@@ -23,6 +23,7 @@ import ShowProfile from "./components/profile/ShowProfile";
 import ProductForm from "./components/products/ProductForm";
 import WishListPage from "./components/wishlist/WishListPage";
 import ShowAProduct from "./components/products/ShowAProduct";
+import NotFound from "./components/common/NotFound";
 
 //check for tokens
 if (localStorage.jwtToken) {
@@ -51,34 +52,20 @@ class App extends Component {
         <BrowserRouter>
           <div className="App">
             <Navbar />
-            <Route exact path="/" component={Dashboard} />
-            <Route exact path="/product/:id" component={ShowAProduct} />
-            <div className="container">
-              <Route exact path="/register" component={Register} />
-              <Route exact path="/login" component={Login} />
-            </div>
             <Switch>
+              <Route exact path="/" component={Dashboard} />
+              <Route path="/product/:id" component={ShowAProduct} />
               <PrivateRoute
-                exact
                 path="/create-profile"
                 component={ProfileComponent}
               />
-            </Switch>
-            <Switch>
-              <PrivateRoute
-                exact
-                path="/edit-profile"
-                component={EditProfile}
-              />
-            </Switch>
-            <Switch>
-              <PrivateRoute exact path="/profile" component={ShowProfile} />
-            </Switch>
-            <Switch>
-              <PrivateRoute exact path="/sell" component={ProductForm} />
-            </Switch>
-            <Switch>
-              <PrivateRoute exact path="/wishlist" component={WishListPage} />
+              <PrivateRoute path="/edit-profile" component={EditProfile} />
+              <PrivateRoute path="/profile" component={ShowProfile} />
+              <PrivateRoute path="/sell" component={ProductForm} />
+              <PrivateRoute path="/wishlist" component={WishListPage} />
+              <Route path="/register" component={Register} />
+              <Route path="/login" component={Login} />
+              <Route path="" component={NotFound} />
             </Switch>
           </div>
         </BrowserRouter>

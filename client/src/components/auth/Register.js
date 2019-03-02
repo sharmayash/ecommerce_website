@@ -49,7 +49,7 @@ class Register extends Component {
     const { errors } = this.state;
     return (
       <div className="register">
-        <div className="container-fluid center">
+        <div className="container center">
           <h3>Sign up</h3>
           <p>Create Your Account.</p>
           <div className="row">

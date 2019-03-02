@@ -24,7 +24,9 @@ class ProductInfo extends Component {
         window.M.toast({ html: "Product Already exist in Wishlist!" });
       } else {
         this.props.addWish(this.props.product.product);
-        window.M.toast({ html: "added a wish!" });
+        window.M.toast({ html: "added a wish!" }).then(
+          window.location.reload()
+        );
       }
     } else {
       return window.M.toast({ html: "Log in Please!" });
@@ -38,14 +40,14 @@ class ProductInfo extends Component {
   };
   render() {
     const { product, loading } = this.props.product;
-    if(loading) {
+    if (loading) {
       return (
-        <div style={{marginTop: '25%'}}>
+        <div style={{ marginTop: "25%" }}>
           <PreLoader />
-          <br/>
+          <br />
           <span>Loading Info. for u ...</span>
         </div>
-      )
+      );
     }
     return (
       <div className="row">
