@@ -2,9 +2,16 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { addWish } from "../../actions/wishlistActions";
+import { deleteWish } from "../../actions/wishlistActions";
 
 class WishItem extends Component {
+  deleteWishFunc = (id, e) => {
+    e.preventDefault();
+
+    this.props.deleteWish(id);
+    window.location.reload();
+  };
+
   render() {
     const { wishlist } = this.props.profile.profile;
 
@@ -18,6 +25,9 @@ class WishItem extends Component {
             </div>
             <div className="card-action">
               <Link to={`/product/${wish._id}`}>View</Link>
+              <Link to="!#" onClick={this.deleteWishFunc.bind(this, wish._id)}>
+                <i className="material-icons right">delete</i>
+              </Link>
             </div>
           </div>
         </div>
@@ -27,7 +37,7 @@ class WishItem extends Component {
 }
 
 WishItem.proptypes = {
-  addWish: PropTypes.func.isRequired,
+  deleteWish: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired
 };
 
@@ -37,5 +47,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { addWish }
+  { deleteWish }
 )(WishItem);

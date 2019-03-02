@@ -1,7 +1,8 @@
 import {
   GET_PROFILE,
   PROFILE_LOADING,
-  CLEAR_CURRENT_PROFILE
+  CLEAR_CURRENT_PROFILE,
+  DELETE_WISH
 } from "../actions/types";
 
 const initialState = {
@@ -21,6 +22,11 @@ export default (state = initialState, action) => {
         ...state,
         profile: action.payload,
         loading: false
+      };
+    case DELETE_WISH:
+      return {
+        ...state,
+        profile: state.profile.wishlist.filter(item => item._id !== action.payload)
       };
     case CLEAR_CURRENT_PROFILE:
       return {
