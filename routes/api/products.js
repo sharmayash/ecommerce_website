@@ -45,7 +45,8 @@ router.post(
       name: req.body.name,
       company: req.body.company,
       specs: req.body.specs,
-      desc: req.body.desc
+      desc: req.body.desc,
+      category: req.body.category
     });
 
     newProduct.save().then(post => res.json(post));

@@ -26,6 +26,10 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  category: {
+    type: String,
+    required: true
+  },
   reviews: [
     {
       commentBy: {
@@ -42,7 +46,7 @@ const ProductSchema = new mongoose.Schema({
       //       type: mongoose.Schema.Types.ObjectId,
       //       ref: "users"
       //     }
-      //   } 
+      //   }
       //]
     }
   ],

@@ -64,15 +64,28 @@ class ProductInfo extends Component {
             <h5>{product.name}</h5>
             <span>by {product.company}</span>
             <br />
+            <span>category:- {product.category}</span>
             <br />
-            <Link to="!#" className="btn" onClick={this.handleWishClick}>
-              Add To Wishlist
-            </Link>
-            <br />
-            <br />
-            <Link to="!#" className="btn" onClick={this.handleCartClick}>
-              Add To Cart
-            </Link>
+            <div className="row" style={{ margin: "5px" }}>
+              <div className="col s6 m6 l6">
+                <Link
+                  to="!#"
+                  className="btn blue-grey"
+                  onClick={this.handleWishClick}
+                >
+                  Wishlist Me!
+                </Link>
+              </div>
+              <div className="col s6 m6 l6">
+                <Link
+                  to="!#"
+                  className="btn blue-grey"
+                  onClick={this.handleCartClick}
+                >
+                  Add To Cart
+                </Link>
+              </div>
+            </div>
             <h5>
               Specifications :- <br /> {product.specs}
             </h5>

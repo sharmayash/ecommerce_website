@@ -4,7 +4,9 @@ import PropTypes from "prop-types";
 
 const SelectListComponent = ({ name, value, error, onChange, options }) => {
   const selectOptions = options.map(option => (
-    <option key={option.value} value={option.value}>{option.label}</option>
+    <option key={option.value} value={option.value}>
+      {option.label}
+    </option>
   ));
 
   return (
@@ -19,7 +21,9 @@ const SelectListComponent = ({ name, value, error, onChange, options }) => {
       >
         {selectOptions}
       </select>
-      <label>Select Account Type * (reload if this's not visible)</label>
+      <label className="white-text">
+        Select Product Category * (reload if this's not visible)
+      </label>
       {error && <span className="helper-text red-text">{error}</span>}
     </div>
   );

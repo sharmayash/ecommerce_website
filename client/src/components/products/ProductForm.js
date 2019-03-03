@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import TextFieldGroup from "../common/TextFieldGroup";
 import { addProduct } from "../../actions/productsActions";
+import SelectListComponent from "../common/SelectListComponent";
 
 class ProductForm extends Component {
   state = {
@@ -11,6 +12,7 @@ class ProductForm extends Component {
     desc: "",
     specs: "",
     company: "",
+    category: "",
     errors: {}
   };
 
@@ -30,7 +32,8 @@ class ProductForm extends Component {
       desc: this.state.desc,
       specs: this.state.specs,
       company: this.state.company,
-      addedBy: user.name
+      addedBy: user.name,
+      category: this.state.category
     };
 
     this.props.addProduct(newProduct, this.props.history);
@@ -39,7 +42,8 @@ class ProductForm extends Component {
       image: "",
       desc: "",
       specs: "",
-      company: ""
+      company: "",
+      category: ""
     });
   };
 
@@ -49,6 +53,15 @@ class ProductForm extends Component {
 
   render() {
     const { errors } = this.state;
+
+    const options = [
+      { label: "Select Product Category *", value: "0" },
+      { label: "SmartPhones", value: "phones" },
+      { label: "Laptops", value: "laptops" },
+      { label: "Watches", value: "watches" },
+      { label: "Gaming", value: "gaming" },
+      { label: "Headset/Earphones", value: "earphones" }
+    ];
 
     return (
       <div className="productform">
@@ -110,6 +123,16 @@ class ProductForm extends Component {
                       value={this.state.desc}
                       onChange={this.onChange}
                       error={errors.desc}
+                    />
+                  </div>
+                  <div className="row">
+                    <SelectListComponent
+                      placeholder="category"
+                      name="category"
+                      options={options}
+                      value={this.state.category}
+                      onChange={this.onChange}
+                      error={errors.category}
                     />
                   </div>
                 </div>

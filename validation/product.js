@@ -9,6 +9,7 @@ module.exports = function validateProductInput(data) {
   data.company = !isEmpty(data.company) ? data.company : "";
   data.specs = !isEmpty(data.specs) ? data.specs : "";
   data.desc = !isEmpty(data.desc) ? data.desc : "";
+  data.category = !isEmpty(data.category) ? data.category : "";
 
   if (validator.isEmpty(data.name)) {
     errors.name = "Product name field is required";
@@ -28,6 +29,10 @@ module.exports = function validateProductInput(data) {
 
   if (validator.isEmpty(data.desc)) {
     errors.desc = "Product description field is required";
+  }
+
+  if (validator.isEmpty(data.category)) {
+    errors.category = "Product category field is required";
   }
 
   return {
