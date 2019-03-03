@@ -127,7 +127,6 @@ class ProductForm extends Component {
                   </div>
                   <div className="row">
                     <SelectListComponent
-                      placeholder="category"
                       name="category"
                       options={options}
                       value={this.state.category}

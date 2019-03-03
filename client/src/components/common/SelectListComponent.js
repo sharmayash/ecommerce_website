@@ -15,15 +15,15 @@ const SelectListComponent = ({ name, value, error, onChange, options }) => {
         name={name}
         value={value}
         onChange={onChange}
-        className={classnames({
-          validate: error
-        })}
+        className={classnames(
+          {
+            validate: error
+          },
+          "browser-default blue-grey darken-2 hoverable"
+        )}
       >
         {selectOptions}
       </select>
-      <label className="white-text">
-        Select Product Category * (reload if this's not visible)
-      </label>
       {error && <span className="helper-text red-text">{error}</span>}
     </div>
   );
