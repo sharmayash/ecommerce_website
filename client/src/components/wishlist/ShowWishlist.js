@@ -26,7 +26,7 @@ class ShowWishlist extends Component {
   }
 }
 
-ShowWishlist.proptypes = {
+ShowWishlist.propTypes = {
   profile: PropTypes.object.isRequired
 };
 

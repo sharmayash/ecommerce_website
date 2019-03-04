@@ -19,6 +19,12 @@ const ProfileSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.Mixed,
       ref: "products"
     }
+  ],
+  cart: [
+    {
+      type: mongoose.Schema.Types.Mixed,
+      ref: "products"
+    }
   ]
 });
 

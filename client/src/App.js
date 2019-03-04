@@ -24,6 +24,7 @@ import ProductForm from "./components/products/ProductForm";
 import WishListPage from "./components/wishlist/WishListPage";
 import ShowAProduct from "./components/products/ShowAProduct";
 import NotFound from "./components/common/NotFound";
+import CartPage from "./components/cart/CartPage";
 
 //check for tokens
 if (localStorage.jwtToken) {
@@ -63,6 +64,7 @@ class App extends Component {
               <PrivateRoute path="/profile" component={ShowProfile} />
               <PrivateRoute path="/sell" component={ProductForm} />
               <PrivateRoute path="/wishlist" component={WishListPage} />
+              <PrivateRoute path="/cart" component={CartPage} />
               <Route path="/register" component={Register} />
               <Route path="/login" component={Login} />
               <Route path="" component={NotFound} />

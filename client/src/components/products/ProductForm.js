@@ -155,7 +155,7 @@ class ProductForm extends Component {
   }
 }
 
-ProductForm.proptypes = {
+ProductForm.propTypes = {
   addProduct: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired

@@ -104,6 +104,8 @@ router.post(
   }
 );
 
+// delete an item from wishlist
+
 router.delete(
   "/wishlist/:wish_id",
   passport.authenticate("jwt", { session: false }),
@@ -120,6 +122,60 @@ router.delete(
 
         // save new wishlist Array to db
         profile.save().then(profile => res.json(profile.wishlist));
+      })
+      .catch(err => res.status(400).json(err));
+  }
+);
+
+// get all products in cart
+
+router.get(
+  "/cart",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Profile.findOne({ user: req.user.id }).then(profile =>
+      res.json(profile.cart)
+    );
+  }
+);
+
+// adding item to cart
+
+router.post(
+  "/cart/:prod_id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Profile.findOne({ user: req.user.id })
+      .then(profile => {
+        Product.findById(req.params.prod_id)
+          .then(product => {
+            profile.cart.unshift(product);
+            profile.save().then(profile => res.json(profile));
+          })
+          .catch(err => res.status(404).json(err));
+      })
+      .catch(err => console.log(err));
+  }
+);
+
+// delete an item from cart
+
+router.delete(
+  "/cart/:cart_id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Profile.findOne({ user: req.user.id })
+      .then(profile => {
+        // find index of wished product to delete
+        const index = profile.cart.findIndex(
+          item => item._id == req.params.cart_id
+        );
+
+        // remove product from wishlist array
+        profile.cart.splice(index, 1);
+
+        // save new wishlist Array to db
+        profile.save().then(profile => res.json(profile.cart));
       })
       .catch(err => res.status(400).json(err));
   }

@@ -10,3 +10,4 @@ export const PRODUCT_ADD = "PRODUCT_ADD";
 export const GET_A_PRODUCT = "GET_A_PRODUCT";
 export const PRODUCT_DELETE = "PRODUCT_DELETE";
 export const DELETE_WISH = "DELETE_WISH";
+export const DELETE_A_CART = "DELETE_A_CART";

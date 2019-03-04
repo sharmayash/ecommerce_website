@@ -63,7 +63,7 @@ class ShowProfile extends Component {
   }
 }
 
-ShowProfile.proptypes = {
+ShowProfile.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired

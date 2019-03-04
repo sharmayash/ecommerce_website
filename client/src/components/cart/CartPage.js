@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getCurrentProfile } from "../../actions/profileAction";
 import PreLoader from "../common/PreLoader";
-import ShowWishlist from "./ShowWishlist";
+import ShowCart from "./ShowCart";
 
-class WishListPage extends Component {
+class CartPage extends Component {
   componentDidMount() {
     this.props.getCurrentProfile();
   }
@@ -13,39 +13,36 @@ class WishListPage extends Component {
   render() {
     const { profile, loading } = this.props.profile;
 
-    let showWishlist;
+    let showCart;
 
     if (profile == null || loading) {
-      showWishlist = (
+      showCart = (
         <div>
           <PreLoader />
-          <span>Loading Your Wishlist ...</span>
+          <span>Loading Your Cart ...</span>
         </div>
       );
     } else if (
       Object.keys(profile).length > 0 &&
       profile.constructor === Object
     ) {
-      showWishlist = (
+      showCart = (
         <div>
-          <div className="row">
-            <h4 className="center">Hi! {profile.username} </h4>
-          </div>
-          <ShowWishlist />
+          <ShowCart />
         </div>
       );
     }
 
     return (
       <div className="container-fluid center">
-        <h5>Your Wishlist Products</h5>
-        {showWishlist}
+        <h5>CheckOut Now ...</h5>
+        {showCart}
       </div>
     );
   }
 }
 
-WishListPage.propTypes = {
+CartPage.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired
@@ -59,4 +56,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { getCurrentProfile }
-)(WishListPage);
+)(CartPage);

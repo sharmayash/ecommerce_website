@@ -36,7 +36,7 @@ class ShowProducts extends Component {
   }
 }
 
-ShowProducts.proptypes = {
+ShowProducts.propTypes = {
   getProducts: PropTypes.func.isRequired,
   product: PropTypes.object.isRequired
 };

@@ -19,7 +19,7 @@ const SelectListComponent = ({ name, value, error, onChange, options }) => {
           {
             validate: error
           },
-          "browser-default blue-grey darken-2 hoverable"
+          "browser-default blue-grey darken-2 hoverable grey-text"
         )}
       >
         {selectOptions}

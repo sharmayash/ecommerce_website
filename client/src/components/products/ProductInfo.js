@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { addWish } from "../../actions/wishlistActions";
+import { addCart } from "../../actions/cartActions";
 import { getCurrentProfile } from "../../actions/profileAction";
 import { connect } from "react-redux";
 import PreLoader from "../common/PreLoader";
@@ -36,7 +37,23 @@ class ProductInfo extends Component {
   handleCartClick = e => {
     e.preventDefault();
 
-    console.log("add to cart");
+    if (this.props.auth.isAuthenticated) {
+      // check if product already exist in cart
+      if (
+        this.props.profile.profile.cart
+          .map(item => item._id)
+          .includes(this.props.product.product._id)
+      ) {
+        window.M.toast({
+          html: "Product Already exist in cart! ( increase its quantity )"
+        });
+      } else {
+        this.props.addCart(this.props.product.product);
+        window.M.toast({ html: "added a item to cart!" });
+      }
+    } else {
+      return window.M.toast({ html: "Log in Please!" });
+    }
   };
   render() {
     const { product, loading } = this.props.product;
@@ -99,8 +116,9 @@ class ProductInfo extends Component {
   }
 }
 
-ProductInfo.proptypes = {
+ProductInfo.propTypes = {
   addWish: PropTypes.func.isRequired,
+  addCart: PropTypes.func.isRequired,
   getCurrentProfile: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired,
@@ -115,5 +133,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { addWish, getCurrentProfile }
+  { addWish, addCart, getCurrentProfile }
 )(ProductInfo);

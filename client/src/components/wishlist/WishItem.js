@@ -36,7 +36,7 @@ class WishItem extends Component {
   }
 }
 
-WishItem.proptypes = {
+WishItem.propTypes = {
   deleteWish: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired
 };

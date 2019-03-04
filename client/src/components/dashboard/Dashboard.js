@@ -71,7 +71,7 @@ class Dashboard extends Component {
   }
 }
 
-Dashboard.proptypes = {
+Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired

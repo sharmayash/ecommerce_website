@@ -105,7 +105,7 @@ class ProfileComponent extends Component {
   }
 }
 
-ProfileComponent.proptypes = {
+ProfileComponent.propTypes = {
   postNewProfile: PropTypes.func.isRequired,
   ProfileComponent: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired

@@ -22,7 +22,7 @@ class ProductItem extends Component {
   }
 }
 
-ProductItem.proptypes = {
+ProductItem.propTypes = {
   products: PropTypes.array.isRequired
 };
 

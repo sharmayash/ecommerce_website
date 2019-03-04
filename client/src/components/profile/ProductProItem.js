@@ -47,7 +47,7 @@ class ProductProItem extends Component {
   }
 }
 
-ProductProItem.proptypes = {
+ProductProItem.propTypes = {
   deleteProduct: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   products: PropTypes.array.isRequired

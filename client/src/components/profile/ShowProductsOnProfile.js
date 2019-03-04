@@ -31,7 +31,7 @@ class ShowProductsOnProfile extends Component {
   }
 }
 
-ShowProductsOnProfile.proptypes = {
+ShowProductsOnProfile.propTypes = {
   getProducts: PropTypes.func.isRequired,
   product: PropTypes.object.isRequired
 };
