@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { addWish } from "../../actions/wishlistActions";
-import { addCart } from "../../actions/cartActions";
+import { addCart, addQuantity } from "../../actions/cartActions";
+import { addProductQuantity } from "../../actions/productsActions";
 import { getCurrentProfile } from "../../actions/profileAction";
 import { connect } from "react-redux";
 import PreLoader from "../common/PreLoader";
@@ -25,9 +26,8 @@ class ProductInfo extends Component {
         window.M.toast({ html: "Product Already exist in Wishlist!" });
       } else {
         this.props.addWish(this.props.product.product);
-        window.M.toast({ html: "added a wish!" }).then(
-          window.location.reload()
-        );
+        window.M.toast({ html: "added a wish!" });
+        window.location.reload();
       }
     } else {
       return window.M.toast({ html: "Log in Please!" });
@@ -45,11 +45,14 @@ class ProductInfo extends Component {
           .includes(this.props.product.product._id)
       ) {
         window.M.toast({
-          html: "Product Already exist in cart! ( increase its quantity )"
+          html: "Product already exist in cart"
         });
       } else {
+        this.props.addQuantity(this.props.product.product._id);
+        this.props.addProductQuantity(this.props.product.product._id);
         this.props.addCart(this.props.product.product);
-        window.M.toast({ html: "added a item to cart!" });
+        window.M.toast({ html: "added an item to cart!" });
+        //  window.location.reload();
       }
     } else {
       return window.M.toast({ html: "Log in Please!" });
@@ -119,6 +122,8 @@ class ProductInfo extends Component {
 ProductInfo.propTypes = {
   addWish: PropTypes.func.isRequired,
   addCart: PropTypes.func.isRequired,
+  addQuantity: PropTypes.func.isRequired,
+  addProductQuantity: PropTypes.func.isRequired,
   getCurrentProfile: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired,
@@ -133,5 +138,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { addWish, addCart, getCurrentProfile }
+  { addWish, addCart, addQuantity, addProductQuantity, getCurrentProfile }
 )(ProductInfo);

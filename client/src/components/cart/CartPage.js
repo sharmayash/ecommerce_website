@@ -34,7 +34,7 @@ class CartPage extends Component {
     }
 
     return (
-      <div className="container-fluid center">
+      <div className="container center">
         <h5>CheckOut Now ...</h5>
         {showCart}
       </div>

@@ -13,6 +13,8 @@ class ProductForm extends Component {
     specs: "",
     company: "",
     category: "",
+    inventory: "",
+    quantity: 0,
     errors: {}
   };
 
@@ -33,7 +35,9 @@ class ProductForm extends Component {
       specs: this.state.specs,
       company: this.state.company,
       addedBy: user.name,
-      category: this.state.category
+      category: this.state.category,
+      inventory: this.state.inventory,
+      quantity: 0
     };
 
     this.props.addProduct(newProduct, this.props.history);
@@ -43,7 +47,9 @@ class ProductForm extends Component {
       desc: "",
       specs: "",
       company: "",
-      category: ""
+      inventory: "",
+      category: "",
+      quantity: 0
     });
   };
 
@@ -126,6 +132,16 @@ class ProductForm extends Component {
                     />
                   </div>
                   <div className="row">
+                    <TextFieldGroup
+                      placeholder="Total no. of item available"
+                      name="inventory"
+                      type="text"
+                      value={this.state.inventory}
+                      onChange={this.onChange}
+                      error={errors.inventory}
+                    />
+                  </div>
+                  <div className="row">
                     <SelectListComponent
                       name="category"
                       options={options}
@@ -156,7 +172,7 @@ class ProductForm extends Component {
 }
 
 ProductForm.propTypes = {
-  addProduct: PropTypes.object.isRequired,
+  addProduct: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };

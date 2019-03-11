@@ -11,3 +11,6 @@ export const GET_A_PRODUCT = "GET_A_PRODUCT";
 export const PRODUCT_DELETE = "PRODUCT_DELETE";
 export const DELETE_WISH = "DELETE_WISH";
 export const DELETE_A_CART = "DELETE_A_CART";
+export const QTY_UP = "QTY_UP";
+export const QTY_DOWN = "QTY_DOWN";
+export const ADD_QUANTITY = "ADD_QUANTITY";

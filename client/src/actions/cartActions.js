@@ -4,7 +4,9 @@ import {
   PRODUCT_LOADING,
   GET_ERRORS,
   PRODUCT_ADD,
-  DELETE_A_CART
+  DELETE_A_CART,
+  QTY_UP,
+  QTY_DOWN
 } from "./types";
 
 export const getCartProducts = () => dispatch => {
@@ -62,6 +64,37 @@ export const deleteCart = Id => dispatch => {
       })
     );
 };
+
+// increase quantity and decrease from inventory in cart
+
+export const addQuantity = Id => dispatch => {
+  axios
+    .post(`/api/profile/cart/Q_UP/${Id}`)
+    .then(res => {
+      dispatch({
+        type: QTY_UP,
+        Id,
+        payload: res.data
+      });
+    })
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
+
+// increase quantity and decrease from inventory
+
+// export const decreaseQuantity = Id => {
+//   return {
+//     type: QTY_DOWN,
+//     Id,
+//     payload: 1
+//   };
+// };
 
 // set products loading
 

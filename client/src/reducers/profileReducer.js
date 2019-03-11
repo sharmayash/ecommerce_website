@@ -3,7 +3,9 @@ import {
   PROFILE_LOADING,
   CLEAR_CURRENT_PROFILE,
   DELETE_WISH,
-  DELETE_A_CART
+  DELETE_A_CART,
+  QTY_UP,
+  QTY_DOWN
 } from "../actions/types";
 
 const initialState = {
@@ -36,6 +38,23 @@ export default (state = initialState, action) => {
         ...state,
         profile: state.profile.cart.filter(item => item._id !== action.payload)
       };
+    case QTY_UP:
+      state.profile.cart.map(item => {
+        if (item._id === action.Id) {
+          item.quantity = action.payload;
+        }
+      });
+      return state;
+    // case QTY_DOWN:
+    //   return {
+    //     ...state,
+    //     profile: state.profile.cart.map(item => {
+    //       if (item._id === action.Id) {
+    //         item.quantity -= action.payload;
+    //       }
+    //       return item;
+    //     })
+    //   };
     case CLEAR_CURRENT_PROFILE:
       return {
         ...state,

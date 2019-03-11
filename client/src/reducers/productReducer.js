@@ -3,6 +3,7 @@ import {
   PROFILE_LOADING,
   PRODUCT_ADD,
   GET_A_PRODUCT,
+  ADD_QUANTITY,
   PRODUCT_DELETE
 } from "../actions/types";
 
@@ -36,6 +37,9 @@ export default (state = initialState, action) => {
         product: action.payload,
         loading: false
       };
+    case ADD_QUANTITY:
+      state.product.quantity = action.payload;
+      return state;
     case PRODUCT_DELETE:
       return {
         ...state,

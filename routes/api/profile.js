@@ -181,4 +181,36 @@ router.delete(
   }
 );
 
+// increase item quantity in cart
+
+router.post(
+  "/product/quantity_up/:prod_id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Product.findById(req.params.prod_id)
+      .then(product => {
+        product.quantity++;
+        product.save().then(() => res.json(product.quantity));
+      })
+      .catch(err => res.status(400).json(err));
+  }
+);
+
+router.post(
+  "/cart/Q_up/:prod_id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Profile.findOne({ user: req.user.id })
+      .then(profile => {
+        profile.cart.map(item => {
+          if (item._id == req.params.prod_id) {
+            item.quantity++;
+            profile.save().then(() => res.json(item.quantity));
+          }
+        });
+      })
+      .catch(err => res.status(400).json(err));
+  }
+);
+
 module.exports = router;

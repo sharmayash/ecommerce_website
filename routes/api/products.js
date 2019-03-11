@@ -46,7 +46,9 @@ router.post(
       company: req.body.company,
       specs: req.body.specs,
       desc: req.body.desc,
-      category: req.body.category
+      category: req.body.category,
+      inventory: req.body.inventory,
+      quantity: 0
     });
 
     newProduct.save().then(post => res.json(post));
