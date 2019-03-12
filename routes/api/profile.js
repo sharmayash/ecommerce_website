@@ -181,7 +181,7 @@ router.delete(
   }
 );
 
-// increase item quantity in cart
+// increase item quantity in product
 
 router.post(
   "/product/quantity_up/:prod_id",
@@ -195,6 +195,8 @@ router.post(
       .catch(err => res.status(400).json(err));
   }
 );
+
+// increase item quantity in cart
 
 router.post(
   "/cart/Q_up/:prod_id",

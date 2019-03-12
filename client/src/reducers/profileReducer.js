@@ -43,6 +43,7 @@ export default (state = initialState, action) => {
         if (item._id === action.Id) {
           item.quantity = action.payload;
         }
+        return item;
       });
       return state;
     // case QTY_DOWN:

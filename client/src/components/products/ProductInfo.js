@@ -52,7 +52,7 @@ class ProductInfo extends Component {
         this.props.addProductQuantity(this.props.product.product._id);
         this.props.addCart(this.props.product.product);
         window.M.toast({ html: "added an item to cart!" });
-        //  window.location.reload();
+        window.location.reload();
       }
     } else {
       return window.M.toast({ html: "Log in Please!" });
