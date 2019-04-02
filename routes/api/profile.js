@@ -196,23 +196,4 @@ router.post(
   }
 );
 
-// increase item quantity in cart
-
-router.post(
-  "/cart/Q_up/:prod_id",
-  passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    Profile.findOne({ user: req.user.id })
-      .then(profile => {
-        profile.cart.map(item => {
-          if (item._id == req.params.prod_id) {
-            item.quantity++;
-            profile.save().then(() => res.json(item.quantity));
-          }
-        });
-      })
-      .catch(err => res.status(400).json(err));
-  }
-);
-
 module.exports = router;

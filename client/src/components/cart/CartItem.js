@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { deleteCart, addQuantity } from "../../actions/cartActions";
+import { deleteCart } from "../../actions/cartActions";
 import { addProductQuantity } from "../../actions/productsActions";
 
 class CartItem extends Component {
@@ -18,11 +18,11 @@ class CartItem extends Component {
     e.preventDefault();
 
     this.props.addProductQuantity(id);
-    this.props.addQuantity(id);
   };
 
   render() {
     const { cart } = this.props.profile.profile;
+    const { product } = this.props.product;
 
     return cart.map(cart => {
       return (
@@ -38,7 +38,7 @@ class CartItem extends Component {
                 <Link to="!#">
                   <i className="material-icons left">remove</i>
                 </Link>
-                {cart.quantity}
+                {product.quantity}
                 <Link to="!#">
                   <i
                     className="material-icons right"
@@ -72,7 +72,6 @@ class CartItem extends Component {
 
 CartItem.propTypes = {
   deleteCart: PropTypes.func.isRequired,
-  addQuantity: PropTypes.func.isRequired,
   addProductQuantity: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   product: PropTypes.object.isRequired
@@ -85,5 +84,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { deleteCart, addQuantity, addProductQuantity }
+  { deleteCart, addProductQuantity }
 )(CartItem);
