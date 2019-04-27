@@ -34,10 +34,10 @@ const ProductSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  quantity: {
-    type: Number,
-    required: true
-  },
+  // quantity: {
+  //   type: Number,
+  //   required: true
+  // },
   reviews: [
     {
       commentBy: {

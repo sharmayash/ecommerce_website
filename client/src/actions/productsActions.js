@@ -6,7 +6,7 @@ import {
   GET_ERRORS,
   PRODUCT_ADD,
   PRODUCT_DELETE,
-  ADD_QUANTITY
+  // ADD_QUANTITY
 } from "./types";
 
 // get all products
@@ -87,22 +87,23 @@ export const deleteProduct = productId => dispatch => {
 };
 // increase quantity and decrease from inventory in product
 
-export const addProductQuantity = Id => dispatch => {
-  axios
-    .post(`/api/profile/product/quantity_up/${Id}`)
-    .then(res => {
-      dispatch({
-        type: ADD_QUANTITY,
-        payload: res.data
-      });
-    })
-    .catch(err =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      })
-    );
-};
+// export const addProductQuantity = Id => dispatch => {
+//   axios
+//     .post(`/api/profile/product/quantity_up/${Id}`)
+//     .then(res => {
+//       dispatch({
+//         type: ADD_QUANTITY,
+//         payload: res.data,
+//         Id: Id
+//       });
+//     })
+//     .catch(err =>
+//       dispatch({
+//         type: GET_ERRORS,
+//         payload: err.response.data
+//       })
+//     );
+// };
 
 // set products loading
 

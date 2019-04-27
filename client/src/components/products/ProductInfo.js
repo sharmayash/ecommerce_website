@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { addWish } from "../../actions/wishlistActions";
 import { addCart } from "../../actions/cartActions";
-import { addProductQuantity } from "../../actions/productsActions";
+// import { addProductQuantity } from "../../actions/productsActions";
 import { getCurrentProfile } from "../../actions/profileAction";
 import { connect } from "react-redux";
 import PreLoader from "../common/PreLoader";
@@ -49,7 +49,7 @@ class ProductInfo extends Component {
         });
       } else {
         // this.props.addQuantity(this.props.product.product._id); // for cart
-        this.props.addProductQuantity(this.props.product.product._id);
+        // this.props.addProductQuantity(this.props.product.product._id);
         this.props.addCart(this.props.product.product);
         window.M.toast({ html: "added an item to cart!" });
         window.location.reload();
@@ -122,7 +122,7 @@ class ProductInfo extends Component {
 ProductInfo.propTypes = {
   addWish: PropTypes.func.isRequired,
   addCart: PropTypes.func.isRequired,
-  addProductQuantity: PropTypes.func.isRequired,
+  // addProductQuantity: PropTypes.func.isRequired,
   getCurrentProfile: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired,
@@ -137,5 +137,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { addWish, addCart, addProductQuantity, getCurrentProfile }
+  { addWish, addCart, /*addProductQuantity,*/ getCurrentProfile }
 )(ProductInfo);

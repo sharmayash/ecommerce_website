@@ -3,26 +3,26 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { deleteCart } from "../../actions/cartActions";
-import { addProductQuantity } from "../../actions/productsActions";
+// import { addProductQuantity } from "../../actions/productsActions";
 
 class CartItem extends Component {
   deleteCartFunc = (id, e) => {
     e.preventDefault();
 
-    this.props.product.product.quantity = 0;
+    // this.props.product.product.quantity = 0;
     this.props.deleteCart(id);
     window.location.reload();
   };
 
-  addCartQuantity = (id, e) => {
-    e.preventDefault();
+  // addCartQuantity = (id, e) => {
+  //   e.preventDefault();
 
-    this.props.addProductQuantity(id);
-  };
+  //   this.props.addProductQuantity(id);
+  // };
 
   render() {
     const { cart } = this.props.profile.profile;
-    const { product } = this.props.product;
+    // const { product } = this.props.product;
 
     return cart.map(cart => {
       return (
@@ -35,7 +35,7 @@ class CartItem extends Component {
                   alt={cart.name}
                   className="cardImage responsive-img"
                 />
-                <Link to="!#">
+                {/* <Link to="!#">
                   <i className="material-icons left">remove</i>
                 </Link>
                 {product.quantity}
@@ -46,7 +46,7 @@ class CartItem extends Component {
                   >
                     add
                   </i>
-                </Link>
+                </Link> */}
               </div>
               <div className="card-content s12 m9 l9">
                 <p className="card-title">{cart.name}</p>
@@ -72,7 +72,7 @@ class CartItem extends Component {
 
 CartItem.propTypes = {
   deleteCart: PropTypes.func.isRequired,
-  addProductQuantity: PropTypes.func.isRequired,
+  // addProductQuantity: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   product: PropTypes.object.isRequired
 };
@@ -84,5 +84,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { deleteCart, addProductQuantity }
+  { deleteCart /*addProductQuantity */ }
 )(CartItem);

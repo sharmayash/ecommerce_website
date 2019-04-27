@@ -14,7 +14,7 @@ class ProductForm extends Component {
     company: "",
     category: "",
     inventory: "",
-    quantity: 0,
+    // quantity: 0,
     errors: {}
   };
 
@@ -37,7 +37,7 @@ class ProductForm extends Component {
       addedBy: user.name,
       category: this.state.category,
       inventory: this.state.inventory,
-      quantity: 0
+      // quantity: 0
     };
 
     this.props.addProduct(newProduct, this.props.history);
@@ -49,7 +49,7 @@ class ProductForm extends Component {
       company: "",
       inventory: "",
       category: "",
-      quantity: 0
+      // quantity: 0
     });
   };
 

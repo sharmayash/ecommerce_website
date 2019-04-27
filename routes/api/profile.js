@@ -181,19 +181,19 @@ router.delete(
   }
 );
 
-// increase item quantity in product
+// // increase item quantity in product
 
-router.post(
-  "/product/quantity_up/:prod_id",
-  passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    Product.findById(req.params.prod_id)
-      .then(product => {
-        product.quantity++;
-        product.save().then(() => res.json(product.quantity));
-      })
-      .catch(err => res.status(400).json(err));
-  }
-);
+// router.post(
+//   "/product/quantity_up/:prod_id",
+//   passport.authenticate("jwt", { session: false }),
+//   (req, res) => {
+//     Product.findById(req.params.prod_id)
+//       .then(product => {
+//         product.quantity++;
+//         product.save().then(() => res.json(product.quantity));
+//       })
+//       .catch(err => res.status(400).json(err));
+//   }
+// );
 
 module.exports = router;
