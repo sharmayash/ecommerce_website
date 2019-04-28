@@ -25,6 +25,7 @@ import WishListPage from "./components/wishlist/WishListPage";
 import ShowAProduct from "./components/products/ShowAProduct";
 import NotFound from "./components/common/NotFound";
 import CartPage from "./components/cart/CartPage";
+import ShowPhones from "./components/category/ShowPhones";
 
 //check for tokens
 if (localStorage.jwtToken) {
@@ -55,6 +56,7 @@ class App extends Component {
             <Navbar />
             <Switch>
               <Route exact path="/" component={Dashboard} />
+              <Route exact path="/category/:name" component={ShowPhones} />
               <Route path="/product/:id" component={ShowAProduct} />
               <PrivateRoute
                 path="/create-profile"

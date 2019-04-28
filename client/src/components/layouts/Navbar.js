@@ -77,27 +77,27 @@ class Navbar extends Component {
               style={{ marginLeft: "150px" }}
             >
               <li>
-                <Link to="/phones">
+                <Link to="/category/phones">
                   <i className="material-icons">phone_iphone</i>
                 </Link>
               </li>
               <li>
-                <Link to="/laptops">
+                <Link to="/category/laptops">
                   <i className="material-icons">laptop</i>
                 </Link>
               </li>
               <li>
-                <Link to="/watches">
+                <Link to="/category/watches">
                   <i className="material-icons">watch</i>
                 </Link>
               </li>
               <li>
-                <Link to="/games">
+                <Link to="/category/games">
                   <i className="material-icons">games</i>
                 </Link>
               </li>
               <li>
-                <Link to="/headset">
+                <Link to="/category/headset">
                   <i className="material-icons">headset</i>
                 </Link>
               </li>
