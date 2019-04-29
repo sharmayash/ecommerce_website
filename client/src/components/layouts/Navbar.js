@@ -92,7 +92,7 @@ class Navbar extends Component {
                 </Link>
               </li>
               <li>
-                <Link to="/category/games">
+                <Link to="/category/gaming">
                   <i className="material-icons">games</i>
                 </Link>
               </li>

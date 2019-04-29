@@ -48,7 +48,8 @@ router.post(
       desc: req.body.desc,
       category: req.body.category,
       inventory: req.body.inventory,
-      quantity: 0
+      price: req.body.price
+      // quantity: 0
     });
 
     newProduct.save().then(post => res.json(post));
@@ -96,7 +97,9 @@ router.post(
 
         product.save().then(product => res.json(product));
       })
-      .catch(err => res.status(404).json({ noproductfound: "no product found" }));
+      .catch(err =>
+        res.status(404).json({ noproductfound: "no product found" })
+      );
   }
 );
 
@@ -124,7 +127,9 @@ router.delete(
 
         product.save().then(product => res.json(product));
       })
-      .catch(err => res.status(404).json({ noproductfound: "no product found" }));
+      .catch(err =>
+        res.status(404).json({ noproductfound: "no product found" })
+      );
   }
 );
 

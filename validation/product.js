@@ -9,6 +9,7 @@ module.exports = function validateProductInput(data) {
   data.company = !isEmpty(data.company) ? data.company : "";
   data.specs = !isEmpty(data.specs) ? data.specs : "";
   data.desc = !isEmpty(data.desc) ? data.desc : "";
+  data.price = !isEmpty(data.price) ? data.price : "";
   data.category = !isEmpty(data.category) ? data.category : "";
 
   if (validator.isEmpty(data.name)) {
@@ -29,6 +30,10 @@ module.exports = function validateProductInput(data) {
 
   if (validator.isEmpty(data.desc)) {
     errors.desc = "Product description field is required";
+  }
+  
+  if (validator.isEmpty(data.price)) {
+    errors.price = "Product price is required";
   }
 
   if (validator.isEmpty(data.category)) {

@@ -14,6 +14,7 @@ class ProductForm extends Component {
     company: "",
     category: "",
     inventory: "",
+    price: "",
     // quantity: 0,
     errors: {}
   };
@@ -36,7 +37,8 @@ class ProductForm extends Component {
       company: this.state.company,
       addedBy: user.name,
       category: this.state.category,
-      inventory: this.state.inventory,
+      price: this.state.price,
+      inventory: this.state.inventory
       // quantity: 0
     };
 
@@ -49,6 +51,7 @@ class ProductForm extends Component {
       company: "",
       inventory: "",
       category: "",
+      price: ""
       // quantity: 0
     });
   };
@@ -66,7 +69,7 @@ class ProductForm extends Component {
       { label: "Laptops", value: "laptops" },
       { label: "Watches", value: "watches" },
       { label: "Gaming", value: "gaming" },
-      { label: "Headset/Earphones", value: "earphones" }
+      { label: "Headset/Earphones", value: "headset" }
     ];
 
     return (
@@ -139,6 +142,16 @@ class ProductForm extends Component {
                       value={this.state.inventory}
                       onChange={this.onChange}
                       error={errors.inventory}
+                    />
+                  </div>
+                  <div className="row">
+                    <TextFieldGroup
+                      placeholder="Price"
+                      name="price"
+                      type="text"
+                      value={this.state.price}
+                      onChange={this.onChange}
+                      error={errors.price}
                     />
                   </div>
                   <div className="row">

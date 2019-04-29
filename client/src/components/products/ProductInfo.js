@@ -58,8 +58,10 @@ class ProductInfo extends Component {
       return window.M.toast({ html: "Log in Please!" });
     }
   };
+
   render() {
     const { product, loading } = this.props.product;
+
     if (loading) {
       return (
         <div style={{ marginTop: "25%" }}>
@@ -69,50 +71,55 @@ class ProductInfo extends Component {
         </div>
       );
     }
+
     return (
-      <div className="row">
+      <div className="info grey-text">
         <br />
-        <div className="col s12 m12 l5">
-          <img
-            className="responsive-img"
-            src={product.image}
-            alt={product.company}
-          />
-        </div>
-        <div className="col s12 m12 l7">
-          <div className="container">
-            <h5>{product.name}</h5>
-            <span>by {product.company}</span>
-            <br />
-            <span>category:- {product.category}</span>
-            <br />
-            <div className="row" style={{ margin: "5px" }}>
-              <div className="col s6 m6 l6">
-                <Link
-                  to="!#"
-                  className="btn blue-grey"
-                  onClick={this.handleWishClick}
-                >
-                  Wishlist Me!
-                </Link>
-              </div>
-              <div className="col s6 m6 l6">
-                <Link
-                  to="!#"
-                  className="btn blue-grey"
-                  onClick={this.handleCartClick}
-                >
-                  Add To Cart
-                </Link>
+        <div className="row">
+          <aside className="col s12 m12 l5">
+            <img
+              className="responsive-img"
+              src={product.image}
+              alt={product.company}
+              style={{ maxHeight: "600px" }}
+            />
+          </aside>
+          <div style={{ marginTop: "10vh" }} className="col s12 m12 l7">
+            <div className="container">
+              <h4>{product.name}</h4>
+              <span>by {product.company}</span>
+              <br />
+              <span>category:- {product.category}</span>
+              <br />
+              <p>Price :: $ {product.price}</p>
+              <div className="row" style={{ paddingTop: "20px" }}>
+                <div className="col s6 m6 l6">
+                  <Link
+                    to="!#"
+                    className="btn blue-grey"
+                    onClick={this.handleWishClick}
+                  >
+                    Wishlist Me!
+                  </Link>
+                </div>
+                <div className="col s6 m6 l6">
+                  <Link
+                    to="!#"
+                    className="btn blue-grey"
+                    onClick={this.handleCartClick}
+                  >
+                    Add To Cart
+                  </Link>
+                </div>
               </div>
             </div>
-            <h5>
-              Specifications :- <br /> {product.specs}
-            </h5>
-            <h5>
-              Descriptions :- <br /> {product.desc}
-            </h5>
           </div>
+        </div>
+        <div style={{ padding: "50px" }}>
+          <h5>Specifications :-</h5>
+          <span className="">{product.specs}</span>
+          <h5>Descriptions :-</h5>
+          <span>{product.desc}</span>
         </div>
       </div>
     );
