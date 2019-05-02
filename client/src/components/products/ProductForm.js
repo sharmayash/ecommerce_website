@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+// import axios from "axios";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import TextFieldGroup from "../common/TextFieldGroup";
@@ -8,7 +9,7 @@ import SelectListComponent from "../common/SelectListComponent";
 class ProductForm extends Component {
   state = {
     name: "",
-    image: "",
+    image: null,
     desc: "",
     specs: "",
     company: "",
@@ -24,6 +25,20 @@ class ProductForm extends Component {
       this.setState({ errors: nextProps.errors });
     }
   }
+
+  selectFile = event => {
+    this.setState({
+      image: event.target.files[0]
+    });
+  };
+
+  uploadFile = () => {
+    const data = new FormData();
+    console.log(data.get("image"));
+    data.append("image", this.state.image);
+    console.log(data);
+  };
+
   onSubmit = e => {
     e.preventDefault();
 
@@ -45,7 +60,7 @@ class ProductForm extends Component {
     this.props.addProduct(newProduct, this.props.history);
     this.setState({
       name: "",
-      image: "",
+      image: null,
       desc: "",
       specs: "",
       company: "",
@@ -81,6 +96,7 @@ class ProductForm extends Component {
               action="POST"
               onSubmit={this.onSubmit}
               className="col s12 m12 l12"
+              encType="multipart/form-data"
             >
               <div className="card z-depth-5 blue-grey darken-2">
                 <div className="card-content white-text">
@@ -105,14 +121,24 @@ class ProductForm extends Component {
                     />
                   </div>
                   <div className="row">
-                    <TextFieldGroup
-                      placeholder="Image url"
-                      name="image"
-                      type="text"
-                      value={this.state.image}
-                      onChange={this.onChange}
-                      error={errors.image}
-                    />
+                    <div className="file-field input-field">
+                      <div className="btn">
+                        <span>File</span>
+                        <input
+                          type="file"
+                          name="image"
+                          // value={this.state.image}
+                          onChange={this.selectFile}
+                          error={errors.image}
+                        />
+                      </div>
+                      <div className="file-path-wrapper">
+                        <input className="file-path validate" type="text" />
+                      </div>
+                    </div>
+                    <div className="btn" onClick={this.uploadFile}>
+                      upload
+                    </div>
                   </div>
                   <div className="row">
                     <TextFieldGroup

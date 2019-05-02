@@ -1,6 +1,36 @@
 const express = require("express"),
   router = express.Router(),
-  passport = require("passport");
+  passport = require("passport"),
+  multer = require("multer");
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "./uploads");
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  }
+});
+
+const fileFilter = (req, file, cb) => {
+  if (
+    file.mimetype === "image/jpeg" ||
+    file.mimetype === "image/png" ||
+    file.mimetype === "image/jpg"
+  ) {
+    cb(null, true);
+  } else {
+    cb(new Error("Image File Not Allowed"), false);
+  }
+};
+
+const upload = multer({
+  storage: storage,
+  limit: {
+    fileSize: 1024 * 1024 * 3 // 3 mb
+  },
+  fileFilter: fileFilter
+});
 
 // product model
 const Product = require("../../models/products");
@@ -31,6 +61,7 @@ router.get("/:id", (req, res) => {
 
 router.post(
   "/",
+  upload.single("image"),
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     const { errors, isValid } = validateProductInput(req.body);
@@ -41,7 +72,7 @@ router.post(
 
     const newProduct = new Product({
       seller: req.user.id,
-      image: req.body.image,
+      // image: req.file.path,
       name: req.body.name,
       company: req.body.company,
       specs: req.body.specs,

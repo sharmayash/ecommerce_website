@@ -64,7 +64,7 @@ class App extends Component {
               />
               <PrivateRoute path="/edit-profile" component={EditProfile} />
               <PrivateRoute path="/profile" component={ShowProfile} />
-              <PrivateRoute path="/sell" component={ProductForm} />
+              <PrivateRoute exact path="/sell" component={ProductForm} />
               <PrivateRoute path="/wishlist" component={WishListPage} />
               <PrivateRoute path="/cart" component={CartPage} />
               <Route path="/register" component={Register} />
