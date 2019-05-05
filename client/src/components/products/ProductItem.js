@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 
 class ProductItem extends Component {
   render() {
-    const data = Array.from(this.props.products);
+    // const data = Array.from(this.props.products);
 
-    return data.map(product => (
+    return this.props.products.map(product => (
       <div className="col s12 m6 l4" key={product._id}>
         <div className="card cardpadding">
           <div className="card-image center">
