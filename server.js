@@ -1,6 +1,7 @@
 const express = require("express"),
   mongoose = require("mongoose"),
   bodyParser = require("body-parser"),
+  path = require("path"),
   cors = require("cors"),
   passport = require("passport");
 
@@ -19,6 +20,13 @@ app.use(bodyParser.json());
 app.use("/uploads", express.static("uploads"));
 
 app.use(cors());
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 // db configurations
 const db = require("./config/keys").mongoURI;
