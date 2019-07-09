@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {withRouter} from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import TextFieldGroup from "../common/TextFieldGroup";
 //import SelectListComponent from "../common/SelectListComponent";
@@ -10,7 +10,7 @@ class ProfileComponent extends Component {
   state = {
     username: "",
     address: "",
-//    accountType: "",
+    //    accountType: "",
     wishlist: [],
     errors: {}
   };
@@ -20,7 +20,7 @@ class ProfileComponent extends Component {
   };
 
   componentDidMount() {
-      this.props.getCurrentProfile();
+    this.props.getCurrentProfile();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -28,14 +28,14 @@ class ProfileComponent extends Component {
       this.setState({ errors: nextProps.errors });
     }
 
-    if(nextProps.profile.profile) {
-        const profile = nextProps.profile.profile;
+    if (nextProps.profile.profile) {
+      const profile = nextProps.profile.profile;
 
-        this.setState({
-            username: profile.username,
-            address: profile.address
-           // accountType: profile.accountType
-        })
+      this.setState({
+        username: profile.username,
+        address: profile.address
+        // accountType: profile.accountType
+      });
     }
   }
   onSubmit = e => {
@@ -44,7 +44,7 @@ class ProfileComponent extends Component {
     const profileData = {
       username: this.state.username,
       address: this.state.address
-    //  accountType: this.state.accountType
+      //  accountType: this.state.accountType
     };
 
     ////////////////////////////////////////////////
@@ -110,7 +110,7 @@ class ProfileComponent extends Component {
 ProfileComponent.propTypes = {
   postNewProfile: PropTypes.func.isRequired,
   getCurrentProfile: PropTypes.func.isRequired,
-  // ProfileComponent: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
 

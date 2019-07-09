@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 class ProductItem extends Component {
   render() {
-    const products = [...this.props.products];
+    const { products } = this.props;
 
     return products.map(product => (
       <div className="col s12 m6 l4" key={product._id}>
